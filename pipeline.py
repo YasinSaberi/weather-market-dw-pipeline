@@ -1,11 +1,12 @@
-import pandas as pd
-import numpy as np
+import requests
 
-# Creating a DataFrame from scratch (Simulation of staging data)
-data = {
-    'emp_id': [101, 102, 103, 104],
-    'name': ['Alice', 'Bob', 'Charlie', 'David'],
-    'department': ['DE', 'DS', 'DE', 'DA'],
-    'salary': [95000, 105000, np.nan, 88000] # Simulated missing value
-}
-df = pd.DataFrame(data)
+class APIClient:
+    def __init__(self, base_url):
+        self.base_url = base_url
+
+    def fetch_raw_data(self, symbol):
+        pass
+
+class DataTransformer:
+    def transform_raw_payload(self, raw_data):
+        pass
