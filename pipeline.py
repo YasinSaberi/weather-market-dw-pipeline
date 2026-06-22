@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 from datetime import datetime
+import os
 class APIClient:
     def __init__(self, base_url):
         self.base_url = base_url
@@ -40,7 +41,14 @@ class DataTransformer:
         df["ObservationDate"] = pd.to_datetime(df["ObservationDate"], unit="s").dt.date
         df["IngestedAt"] = datetime.now()
         return df
-        
+
+class DatabaseManager():
+    def __init__(self):
+        self.user = 'sa'
+        self.password = os.getenv("MY_DB_PASSWORD")
+        self.host = "localhost"
+        self.port = '1433'
+        self.db_name = 'master'
 if __name__ == "__main__":
     API_BASE = "https://query1.finance.yahoo.com/v8/finance/chart"
     client = APIClient (base_url=API_BASE)
